@@ -23,7 +23,15 @@ return {
                         hide_dotfiles = false,
                         hide_gitignore = false
                     }
-                }
+                },
+				source_selector = {
+					winbar = true,
+					content_layout = "center",
+					sources = {
+						{ source = "filesystem", display_name = " Files" },
+						{ source = "git_status", display_name = " Git" },
+					},
+				},
             }
             vim.cmd "Neotree" -- Open neo-tree on startup
         end,
@@ -128,7 +136,6 @@ return {
         "nvim-treesitter/nvim-treesitter",
         version = false,
         build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
         cmd = { "TSUpdateSync" },
         opts = {
             highlight = { enable = true },
