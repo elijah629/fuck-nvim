@@ -16,3 +16,21 @@ fuck-neovim is **truly lightweight**. Only `11` plugins or.
 **Ctrl+Shift+`** is **Ctrl-T**
 
 You are also free to modify anything in the [lua/config](./lua/config/) folder. Customize the core plugins in [lua/core/plugins.lua](./lua/core/plugins.lua)
+
+## Install
+
+**I reccomend backing up!**
+
+```sh
+# Config
+mv ~/.config/nvim{,.bak}
+
+# Data
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+```
+
+```sh
+git clone https://github.com/elijah629/fuck-nvim ~/.config/nvim
+```
