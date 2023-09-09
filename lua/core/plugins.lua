@@ -49,7 +49,33 @@ return {
     {
         "akinsho/bufferline.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
-        opts = {}
+        opts = {
+	options = {
+    mode = "tabs",
+    color_icons = true
+  },
+  highlights = {
+    separator = {
+      guifg = '#073642',
+      guibg = '#002b36',
+    },
+    separator_selected = {
+      guifg = '#073642',
+    },
+    background = {
+      guifg = '#657b83',
+      guibg = '#002b36'
+    },
+    buffer_selected = {
+      guifg = '#fdf6e3',
+      gui = "bold",
+    },
+    fill = {
+      guibg = '#073642'
+    }
+  },
+
+}
     },
     -- EDITOR
     {
@@ -108,27 +134,36 @@ return {
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-buffer",
                 "hrsh7th/cmp-path",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
                 "saadparwaiz1/cmp_luasnip",
         },
         opts = function()
-            vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
             local cmp = require("cmp")
-            local defaults = require("cmp.config.default")()
-            return {
+
+	    return {
                 completion = {
-                    completeopt = "menu,menuone,noinsert",
+                    completeopt = "menu,menuone",
                 },
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "buffer" },
-                    { name = "path" },
-                }),
-                experimental = {
-                    ghost_text = {
-                        hl_group = "CmpGhostText",
+                mapping = {
+                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    ["<Tab>"] = cmp.mapping.select_next_item(),
+                    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.close(),
+                    ["<CR>"] = cmp.mapping.confirm {
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = true,
                     },
                 },
-                sorting = defaults.sorting,
+                sources = {
+                    { name = "nvim_lsp" },
+                 -- { name = "luasnip" },
+                    { name = "buffer" },
+                    { name = "nvim_lua" },
+                    { name = "path" },
+		    { name = 'nvim_lsp_signature_help' },
+                },
             }
   	    end,
     },
@@ -157,7 +192,9 @@ return {
     -- LSP
     {
         "williamboman/mason.nvim",
-        opts = {}
+    },
+    {
+	"williamboman/mason-lspconfig.nvim",
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -165,6 +202,15 @@ return {
     },
     {
         "neovim/nvim-lspconfig"
+    },
+    {
+	"nvimdev/lspsaga.nvim",
+	opts = {},
+	event = 'LspAttach',
+	dependencies = {
+	        "nvim-tree/nvim-web-devicons",
+	        "nvim-treesitter/nvim-treesitter"
+	}
     },
     -- Extra
     {
@@ -174,13 +220,26 @@ return {
         config = true
     },
     -- Theming
-    {
+    --[[{
         "monsonjeremy/onedark.nvim",
         lazy = false,
         branch = "treesitter",
         opts = {},
         config = function()
-            vim.cmd[[colorscheme onedark]]
+            vim.cmd.colorsheme onedark
         end,
+    },--]]
+    {
+	    'AlexvZyl/nordic.nvim',
+	    lazy = false,
+	    priority = 1000,
+	    config = function()
+        	require 'nordic' .load()
+	end
+    },
+    -- Git
+    {
+	"lewis6991/gitsigns.nvim",
+	opts = {}
     }
 }

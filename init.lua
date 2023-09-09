@@ -13,11 +13,26 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Install
+-- Config
 
 vim.g.mapleader = " "
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-require("lazy").setup"core.plugins"
-require("core.mappings").setup"config.mappings"
+-- Core
+
+require"lazy".setup"core.plugins"
+require"core.mappings".setup"config.mappings"
+
+-- LSP
+
+require"mason".setup()
+require"mason-lspconfig".setup()
+require"core.lspconfig".setup{
+	"tsserver",
+	"lua_ls",
+	"tailwindcss",
+	"rust_analyzer",
+}
+
+vim.cmd.highlight"EndOfBuffer guifg=bg"
