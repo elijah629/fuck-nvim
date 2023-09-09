@@ -6,7 +6,7 @@ and then you use vscode again...
 
 ## Welcome to the light side
 
-fuck-neovim tries to mimic a the *vscode experience* with some familiar keybindings for beginners to vim. ( No, you still have to learn vim )  
+fuck-neovim tries to mimic the *vscode experience* with some familiar keybindings for beginners to vim. ( No, you still have to learn vim )  
 VSCode feels lightweight... but fuck it is not. Ever got hangs? Yea, that's electron being slow.  
 <!-- please update this plugin count future me -->
 fuck-neovim is **truly lightweight**. Only `11` plugins or.
