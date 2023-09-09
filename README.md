@@ -19,7 +19,9 @@ You are also free to modify anything in the [lua/config](./lua/config/) folder. 
 
 ## Install
 
-**I reccomend backing up!**
+> **Warning**
+>
+> Back up before installing
 
 ```sh
 # Config
