@@ -15,6 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Config
 
+-- 8 tabs are the worst thing to ever exist oh my god they suck so bad. i dont care that mr linux torvalds does this.
+vim.opt.tabstop = 4
 vim.g.mapleader = " "
 vim.wo.number = true
 vim.wo.relativenumber = true

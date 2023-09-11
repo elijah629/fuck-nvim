@@ -51,7 +51,6 @@ return {
         dependencies = "nvim-tree/nvim-web-devicons",
         opts = {
 	options = {
-    mode = "tabs",
     color_icons = true
   },
   highlights = {
@@ -195,10 +194,6 @@ return {
     },
     {
 	"williamboman/mason-lspconfig.nvim",
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        opts = {}
     },
     {
         "neovim/nvim-lspconfig"
