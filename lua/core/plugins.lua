@@ -50,80 +50,36 @@ return {
         "akinsho/bufferline.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         opts = {
-	options = {
-    color_icons = true
-  },
-  highlights = {
-    separator = {
-      guifg = '#073642',
-      guibg = '#002b36',
-    },
-    separator_selected = {
-      guifg = '#073642',
-    },
-    background = {
-      guifg = '#657b83',
-      guibg = '#002b36'
-    },
-    buffer_selected = {
-      guifg = '#fdf6e3',
-      gui = "bold",
-    },
-    fill = {
-      guibg = '#073642'
-    }
-  },
-
-}
+			options = {
+				color_icons = true
+			},
+			highlights = {
+				separator = {
+					guifg = '#073642',
+					guibg = '#002b36',
+				},
+				separator_selected = {
+					guifg = '#073642',
+				},
+				background = {
+					guifg = '#657b83',
+					guibg = '#002b36'
+				},
+			    buffer_selected = {
+					guifg = '#fdf6e3',
+					gui = "bold",
+			    },
+			    fill = {
+					guibg = '#073642'
+				}
+			},
+		}
     },
     -- EDITOR
     {
         "lukas-reineke/indent-blankline.nvim",
-        opts = {
-          buftype_exclude = {
-            "nofile",
-            "terminal",
-          },
-          filetype_exclude = {
-            "help",
-            "startify",
-            "aerial",
-            "alpha",
-            "dashboard",
-            "lazy",
-            "neogitstatus",
-            "NvimTree",
-            "neo-tree",
-            "Trouble",
-          },
-          context_patterns = {
-            "class",
-            "return",
-            "function",
-            "method",
-            "^if",
-            "^while",
-            "jsx_element",
-            "^for",
-            "^object",
-            "^table",
-            "block",
-            "arguments",
-            "if_statement",
-            "else_clause",
-            "jsx_element",
-            "jsx_self_closing_element",
-            "try_statement",
-            "catch_clause",
-            "import_statement",
-            "operation_type",
-          },
-          show_trailing_blankline_indent = false,
-          use_treesitter = true,
-          char = "▏",
-          context_char = "▏",
-          show_current_context = true,
-        }
+		main = "ibl",
+        opts = { }
     },
     {
         "hrsh7th/nvim-cmp",
@@ -133,8 +89,7 @@ return {
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-buffer",
                 "hrsh7th/cmp-path",
-		"hrsh7th/cmp-nvim-lsp-signature-help",
-                "saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lsp-signature-help",
         },
         opts = function()
             local cmp = require("cmp")
@@ -161,8 +116,8 @@ return {
                     { name = "buffer" },
                     { name = "nvim_lua" },
                     { name = "path" },
-		    { name = 'nvim_lsp_signature_help' },
-                },
+				    { name = 'nvim_lsp_signature_help' },
+		        },
             }
   	    end,
     },
@@ -193,19 +148,19 @@ return {
         "williamboman/mason.nvim",
     },
     {
-	"williamboman/mason-lspconfig.nvim",
+		"williamboman/mason-lspconfig.nvim",
     },
     {
         "neovim/nvim-lspconfig"
     },
     {
-	"nvimdev/lspsaga.nvim",
-	opts = {},
-	event = 'LspAttach',
-	dependencies = {
+		"nvimdev/lspsaga.nvim",
+		opts = {},
+		event = 'LspAttach',
+		dependencies = {
 	        "nvim-tree/nvim-web-devicons",
 	        "nvim-treesitter/nvim-treesitter"
-	}
+		}
     },
     -- Extra
     {
@@ -230,11 +185,17 @@ return {
 	    priority = 1000,
 	    config = function()
         	require 'nordic' .load()
-	end
+		end
     },
+
     -- Git
     {
-	"lewis6991/gitsigns.nvim",
-	opts = {}
-    }
+		"lewis6991/gitsigns.nvim",
+		opts = {}
+    },
+	-- Rust
+    {
+		"simrat39/rust-tools.nvim",
+		opts = {}
+	}
 }
